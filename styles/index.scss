@@ -15,14 +15,19 @@ $orange-gradient: radial-gradient(
 );
 $cinderella: #fde8df;
 
+body {
+  font-family: "Mulish", sans-serif;
+}
+
 #post-container {
   background-color: $white;
 
   .carousel-container {
     $absolute-bottom: 25px;
+    $absolute-right: 3rem;
 
     .share-container {
-      right: 16px;
+      right: $absolute-right;
       top: 50px;
 
       img {
@@ -36,7 +41,7 @@ $cinderella: #fde8df;
     }
 
     .carousel-index {
-      right: 16px;
+      right: $absolute-right;
       padding: 3px 8px;
       border-radius: 20px;
       bottom: $absolute-bottom;
@@ -51,7 +56,7 @@ $cinderella: #fde8df;
       border-radius: 20px;
 
       .btn-switch {
-        padding: 3px 12px;
+        text-align: center;
       }
 
       .active {
@@ -97,8 +102,24 @@ $cinderella: #fde8df;
     background-color: $white;
   }
 
+  .bold {
+    font-weight: 700;
+  }
+
+  // font-size
+
   .font-12-14 {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .font-24-30 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .font-20-24 {
     font-size: 20px;
-    line-height: 25px;
+    line-height: 24px;
   }
 }
