@@ -7,12 +7,22 @@ $(document).ready(function () {
     );
   }
 
+  function handleSwitchNavActive(e) {
+    document.querySelectorAll(".bottom-navigation .col-3").forEach((element) => {
+      element.classList.remove("active");
+    });
+    e.currentTarget.classList.add("active");
+  }
+
   function onLoad() {
     updateCarouselIndex(1);
+
     $("#post-carousel").on("slide.bs.carousel", function (e) {
       const currentIndex = e.to + 1;
       updateCarouselIndex(currentIndex);
     });
+
+    $(".bottom-navigation .col-3").on("click", handleSwitchNavActive);
   }
 
   onLoad();

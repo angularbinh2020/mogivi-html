@@ -5,8 +5,10 @@ $silver-chalice: #a6a6a6;
 $mercury: #e2e2e2;
 $silver: #c4c4c4;
 
+$gondola: #353535;
 $black: #000000;
 $black-50: #38383880;
+$night-rider: #313131;
 
 $international-orange: #ff4e00;
 $orange-gradient: radial-gradient(
@@ -22,123 +24,163 @@ body {
 
 #post-container {
   background-color: $white;
+  color: $night-rider;
+  padding-bottom: 70px;
 
-  .carousel-container {
-    $absolute-bottom: 25px;
-    $absolute-right: 15px;
+  .content-container {
+    .carousel-container {
+      $absolute-bottom: 25px;
+      $absolute-right: 15px;
 
-    .share-container {
-      right: $absolute-right;
-      top: 30px;
+      .share-container {
+        right: $absolute-right;
+        top: 30px;
+
+        img {
+          $image-width: 15px;
+
+          width: $image-width;
+          height: $image-width;
+
+          margin-left: 16px;
+        }
+      }
+
+      .carousel-index {
+        right: $absolute-right;
+        padding: 3px 8px;
+        border-radius: 20px;
+        bottom: $absolute-bottom;
+        color: $white;
+        background: $black-50;
+      }
+
+      .vr-2d-container {
+        bottom: $absolute-bottom;
+        left: calc(50% - 35px);
+        background: $white-80;
+        border-radius: 20px;
+
+        .btn-switch {
+          text-align: center;
+        }
+
+        .active {
+          color: $white;
+          background: $orange-gradient;
+          margin-left: -10px;
+          border-radius: 20px;
+        }
+      }
+    }
+
+    .address-container {
+      img {
+        width: 11px;
+      }
+
+      address {
+        font-size: 12px;
+        line-height: 14px;
+        margin-left: 0.5rem;
+      }
+    }
+
+    .tags-container {
+      flex-wrap: nowrap;
+      color: $international-orange;
+
+      .tag {
+        background: $cinderella;
+        padding: 4px 10px;
+        margin-right: 6px;
+        border-radius: 6px;
+      }
+    }
+
+    .id-post {
+      background-color: $mercury;
+      color: $black;
+      border-radius: 10px;
+      padding: 3px 0;
+    }
+
+    .apartment-overview-detail {
+      .col-3 {
+        text-align: center;
+        h4 {
+          font-size: 10px;
+          line-height: 12px;
+          margin-bottom: 0.25rem;
+          font-weight: 600;
+        }
+      }
+
+      .border-left {
+        border-left: 0, 7px solid $silver;
+      }
+    }
+
+    .make-an-appointment-see-house-vr {
+      background-color: $cinderella;
+      padding: 9px 7px;
+      border-radius: 8px;
 
       img {
-        $image-width: 15px;
+        width: 22px;
+        margin-bottom: -0.25rem;
+      }
 
-        width: $image-width;
-        height: $image-width;
-
-        margin-left: 16px;
+      & > div {
+        max-width: 60%;
       }
     }
 
-    .carousel-index {
-      right: $absolute-right;
-      padding: 3px 8px;
-      border-radius: 20px;
-      bottom: $absolute-bottom;
-      color: $white;
-      background: $black-50;
-    }
-
-    .vr-2d-container {
-      bottom: $absolute-bottom;
-      left: calc(50% - 35px);
-      background: $white-80;
-      border-radius: 20px;
-
-      .btn-switch {
-        text-align: center;
-      }
-
-      .active {
-        color: $white;
-        background: $orange-gradient;
-        margin-left: -15px;
-        border-radius: 20px;
-      }
-    }
-  }
-
-  .address-container {
-    img {
-      width: 11px;
-    }
-
-    address {
-      font-size: 12px;
-      line-height: 14px;
-      margin-left: 0.5rem;
-    }
-  }
-
-  .tags-container {
-    flex-wrap: nowrap;
-    color: $international-orange;
-
-    .tag {
-      background: $cinderella;
-      padding: 4px 10px;
-      margin-right: 6px;
-      border-radius: 6px;
-    }
-  }
-
-  .id-post {
-    background-color: $mercury;
-    color: $black;
-    border-radius: 10px;
-    padding: 3px 0;
-  }
-
-  .apartment-overview-detail {
-    .col-3 {
-      text-align: center;
+    .detail-field {
       h4 {
-        font-size: 10px;
-        line-height: 12px;
-        margin-bottom: 0.25rem;
+        font-weight: 600;
+        margin-right: 0.5rem;
+      }
+      h4,
+      p {
+        font-size: 13px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .bottom-navigation {
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    color: $silver-chalice;
+    font-size: 8px;
+    line-height: 10px;
+    background-color: $white;
+    padding: 0px 15px;
+
+    img {
+      opacity: 0;
+    }
+
+    svg {
+      height: 19px;
+      path {
+        stroke: $silver-chalice;
       }
     }
 
-    .border-left {
-      border-left: 0, 7px solid $silver;
-    }
-  }
+    .active {
+      color: $international-orange;
+      svg {
+        path {
+          stroke: $international-orange;
+        }
+      }
 
-  .make-an-appointment-see-house-vr {
-    background-color: $cinderella;
-    padding: 9px 7px;
-    border-radius: 8px;
-
-    img {
-      width: 22px;
-      margin-bottom: -0.25rem;
-    }
-
-    & > div {
-      max-width: 60%;
-    }
-  }
-
-  .detail-field {
-    h4 {
-      font-weight: 600;
-      margin-right: 0.5rem;
-    }
-    h4,
-    p {
-      font-size: 13px;
-      line-height: 20px;
+      img {
+        opacity: 1;
+      }
     }
   }
 
@@ -149,6 +191,8 @@ body {
     border-radius: 8px;
     padding: 5px 12px;
   }
+
+  // font
 
   .bold {
     font-weight: 700;
@@ -193,5 +237,13 @@ body {
 
   .color-international-orange {
     color: $international-orange;
+  }
+
+  .color-gondola {
+    color: $gondola;
+  }
+
+  .color-silver {
+    color: $silver;
   }
 }
