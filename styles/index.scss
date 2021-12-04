@@ -3,6 +3,7 @@ $white-80: #ffffffcc;
 
 $silver-chalice: #a6a6a6;
 $mercury: #e2e2e2;
+$silver: #c4c4c4;
 
 $black: #000000;
 $black-50: #38383880;
@@ -24,14 +25,14 @@ body {
 
   .carousel-container {
     $absolute-bottom: 25px;
-    $absolute-right: 3rem;
+    $absolute-right: 15px;
 
     .share-container {
       right: $absolute-right;
-      top: 50px;
+      top: 30px;
 
       img {
-        $image-width: 35px;
+        $image-width: 15px;
 
         width: $image-width;
         height: $image-width;
@@ -51,7 +52,7 @@ body {
 
     .vr-2d-container {
       bottom: $absolute-bottom;
-      left: 50%;
+      left: calc(50% - 35px);
       background: $white-80;
       border-radius: 20px;
 
@@ -68,38 +69,85 @@ body {
     }
   }
 
+  .address-container {
+    img {
+      width: 11px;
+    }
+
+    address {
+      font-size: 12px;
+      line-height: 14px;
+      margin-left: 0.5rem;
+    }
+  }
+
   .tags-container {
     flex-wrap: nowrap;
     color: $international-orange;
 
     .tag {
-      padding: 8px 15px;
       background: $cinderella;
+      padding: 4px 10px;
       margin-right: 6px;
-      border-radius: 12px;
+      border-radius: 6px;
     }
   }
 
   .id-post {
     background-color: $mercury;
     color: $black;
-    padding: 3px 13px;
+    border-radius: 10px;
+    padding: 3px 0;
   }
 
   .apartment-overview-detail {
     .col-3 {
       text-align: center;
+      h4 {
+        font-size: 10px;
+        line-height: 12px;
+        margin-bottom: 0.25rem;
+      }
+    }
+
+    .border-left {
+      border-left: 0, 7px solid $silver;
     }
   }
 
   .make-an-appointment-see-house-vr {
     background-color: $cinderella;
+    padding: 9px 7px;
+    border-radius: 8px;
+
+    img {
+      width: 22px;
+      margin-bottom: -0.25rem;
+    }
+
+    & > div {
+      max-width: 60%;
+    }
+  }
+
+  .detail-field {
+    h4 {
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    h4,
+    p {
+      font-size: 13px;
+      line-height: 20px;
+    }
   }
 
   .btn-outline {
     border: 1px solid $international-orange;
     color: $international-orange;
     background-color: $white;
+    border-radius: 8px;
+    padding: 5px 12px;
   }
 
   .bold {
@@ -113,6 +161,11 @@ body {
     line-height: 14px;
   }
 
+  .font-13-15 {
+    font-size: 13px;
+    line-height: 15px;
+  }
+
   .font-24-30 {
     font-size: 24px;
     line-height: 30px;
@@ -121,5 +174,24 @@ body {
   .font-20-24 {
     font-size: 20px;
     line-height: 24px;
+  }
+
+  .font-33-39 {
+    font-size: 33px;
+    line-height: 39px;
+  }
+
+  .font-15-36 {
+    font-size: 15px;
+    line-height: 36px;
+  }
+
+  // color
+  .color-silver-chalice {
+    color: $silver-chalice;
+  }
+
+  .color-international-orange {
+    color: $international-orange;
   }
 }
