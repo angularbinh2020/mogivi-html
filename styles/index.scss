@@ -1,0 +1,104 @@
+$white: #ffffff;
+$white-80: #ffffffcc;
+
+$silver-chalice: #a6a6a6;
+$mercury: #e2e2e2;
+
+$black: #000000;
+$black-50: #38383880;
+
+$international-orange: #ff4e00;
+$orange-gradient: radial-gradient(
+  78.17% 109.67% at 8.47% 6.34%,
+  #ffc24d 12.03%,
+  #f26a07 88.05%
+);
+$cinderella: #fde8df;
+
+#post-container {
+  background-color: $white;
+
+  .carousel-container {
+    $absolute-bottom: 25px;
+
+    .share-container {
+      right: 16px;
+      top: 50px;
+
+      img {
+        $image-width: 35px;
+
+        width: $image-width;
+        height: $image-width;
+
+        margin-left: 16px;
+      }
+    }
+
+    .carousel-index {
+      right: 16px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      bottom: $absolute-bottom;
+      color: $white;
+      background: $black-50;
+    }
+
+    .vr-2d-container {
+      bottom: $absolute-bottom;
+      left: 50%;
+      background: $white-80;
+      border-radius: 20px;
+
+      .btn-switch {
+        padding: 3px 12px;
+      }
+
+      .active {
+        color: $white;
+        background: $orange-gradient;
+        margin-left: -15px;
+        border-radius: 20px;
+      }
+    }
+  }
+
+  .tags-container {
+    flex-wrap: nowrap;
+    color: $international-orange;
+
+    .tag {
+      padding: 8px 15px;
+      background: $cinderella;
+      margin-right: 6px;
+      border-radius: 12px;
+    }
+  }
+
+  .id-post {
+    background-color: $mercury;
+    color: $black;
+    padding: 3px 13px;
+  }
+
+  .apartment-overview-detail {
+    .col-3 {
+      text-align: center;
+    }
+  }
+
+  .make-an-appointment-see-house-vr {
+    background-color: $cinderella;
+  }
+
+  .btn-outline {
+    border: 1px solid $international-orange;
+    color: $international-orange;
+    background-color: $white;
+  }
+
+  .font-12-14 {
+    font-size: 20px;
+    line-height: 25px;
+  }
+}
