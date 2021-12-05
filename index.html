@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./fonts/mulish-font.min.css" />
 
     <link rel="stylesheet" href="./libs/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="./libs/fancybox/fancybox.css" />
     <link rel="stylesheet" href="./styles/index.css" />
 </head>
 
@@ -19,30 +20,35 @@
 
         <div class="content-container">
             <div class="position-relative carousel-container">
-                <div id="post-carousel" class="carousel slide" data-ride="carousel">
+                <div id="post-carousel" class="carousel slide d-none image-2d-content" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="./assets/images/preview-image.png" class="d-block w-100" alt="ảnh 1">
+                            <img data-fancybox='images-2d' src="./assets/images/preview-image.png" class="d-block w-100"
+                                alt="ảnh 1">
                         </div>
                         <div class="carousel-item">
-                            <img src="./assets/images/preview-image.png" class="d-block w-100" alt="ảnh 1">
+                            <img data-fancybox='images-2d' src="https://brokerdev.azureedge.net/apartmentnews/637685712264971125_z2804951622048_fa3031e0d134afd437db5617ce4af43c.jpg" class="d-block w-100"
+                                alt="ảnh 1">
                         </div>
                         <div class="carousel-item">
-                            <img src="./assets/images/preview-image.png" class="d-block w-100" alt="ảnh 1">
+                            <img data-fancybox='images-2d' src="./assets/images/preview-image.png" class="d-block w-100"
+                                alt="ảnh 1">
                         </div>
                     </div>
                 </div>
+
+                <div id="post-vr-tour" class="vr-tour-content"></div>
 
                 <div class="position-absolute share-container">
                     <img src="./assets/icons/like.png" />
                     <img src="./assets/icons/share.png" />
                 </div>
 
-                <div class="position-absolute py-1 px-3 font-12-14 carousel-index">0/0</div>
+                <div class="position-absolute d-none py-1 px-3 font-12-14 image-2d-content carousel-index">0/0</div>
 
                 <div class="position-absolute d-flex vr-2d-container">
-                    <div class="btn-switch font-12-14 py-1 px-3">VR</div>
-                    <div class="btn-switch font-12-14 py-1 px-3 active">2D</div>
+                    <div class="btn-switch font-12-14 py-1 px-3 active" data-type="vr">VR</div>
+                    <div class="btn-switch font-12-14 py-1 px-3" data-type="2d">2D</div>
                 </div>
             </div>
 
@@ -194,6 +200,20 @@
                             </p>
                         </div>
                     </div>
+
+                    <div class="col-12 font-13-15">
+                        <p>
+                            <span class="bold">Mô tả:</span> [Bán GẤP căn 2PN - The Sun Avenue] - giá tốt mùa dịch
+                            🔥Chốt giá : 4 tỷ 050
+                            bao hết thuế phí Cơ hội sở huữ căn hộ cao cấp với giá cực hấp dẫn ⚡️ Diện tích :73m2 ⚡️ Nội
+                            thất còn mới đầu tư hơn 300 triệu, ⚡️ 6 tháng bảo trì thiết bị điện tử một lần ⚡️ Nhà thường
+                            xuyên trùng tu căn hộ cho mới ⚡️ Thiết kế nội thất âm tường tạo không gian rộng rãi cho căn
+                            hộ ⚡️ Căn hộ tầng trung phù hợp cho người sợ độ cao, view thoáng ✔️ Chủ nhà dễ thương vui
+                            tính giao dịch nhanh gọn, hợp đồng mua bán sẵn sàng trao tay Địa chỉ : The Sun Avenue, 28
+                            Mai Chí Thọ, phường An Phú, TP Thủ Đức, TPHCM Liên hệ em ngay để đi xem nhà :0362795610 Lê
+                            Trân
+                        </p>
+                    </div>
                 </div>
 
                 <h4 class="font-15-36 font-weight-bolder">Vị trí dự án</h4>
@@ -306,8 +326,14 @@
         </div>
 
     </div>
+    <!-- libs -->
     <script src="./libs/jquery/jquery.slim.min.js"></script>
     <script src="./libs/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./libs/fancybox/fancybox.umd.js"></script>
+    <script src="./libs/marzipano/marzipano.js"></script>
+    <script src="./libs/marzipano/DeviceOrientationControlMethod.js"></script>
+    <!-- libs -->
+
     <script src="./js/index.js"></script>
 </body>
 

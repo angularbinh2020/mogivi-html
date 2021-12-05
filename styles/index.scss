@@ -32,6 +32,16 @@ body {
       $absolute-bottom: 25px;
       $absolute-right: 15px;
 
+      #post-vr-tour {
+        aspect-ratio: 428/249;
+      }
+
+      #post-carousel {
+        img[data-fancybox='images-2d']{
+          aspect-ratio: 428/249;
+        }
+      }
+
       .share-container {
         right: $absolute-right;
         top: 30px;
@@ -57,7 +67,7 @@ body {
 
       .vr-2d-container {
         bottom: $absolute-bottom;
-        left: calc(50% - 35px);
+        left: calc(50% - 40px);
         background: $white-80;
         border-radius: 20px;
 
@@ -68,8 +78,8 @@ body {
         .active {
           color: $white;
           background: $orange-gradient;
-          margin-left: -10px;
           border-radius: 20px;
+          pointer-events: none;
         }
       }
     }
