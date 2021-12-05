@@ -27,8 +27,9 @@
                                 alt="ảnh 1">
                         </div>
                         <div class="carousel-item">
-                            <img data-fancybox='images-2d' src="https://brokerdev.azureedge.net/apartmentnews/637685712264971125_z2804951622048_fa3031e0d134afd437db5617ce4af43c.jpg" class="d-block w-100"
-                                alt="ảnh 1">
+                            <img data-fancybox='images-2d'
+                                src="https://brokerdev.azureedge.net/apartmentnews/637685712264971125_z2804951622048_fa3031e0d134afd437db5617ce4af43c.jpg"
+                                class="d-block w-100" alt="ảnh 1">
                         </div>
                         <div class="carousel-item">
                             <img data-fancybox='images-2d' src="./assets/images/preview-image.png" class="d-block w-100"
@@ -50,6 +51,10 @@
                     <div class="btn-switch font-12-14 py-1 px-3 active" data-type="vr">VR</div>
                     <div class="btn-switch font-12-14 py-1 px-3" data-type="2d">2D</div>
                 </div>
+
+                <a href="#" class="position-absolute vr-tour-content new-vr-icon">
+                    <img src="./assets/icons/vr-new.png"/>
+                </a>
             </div>
 
             <div class="container pb-5">
@@ -321,6 +326,32 @@
                     </svg>
 
                     <p class="mt-1">Tài khoản</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button trigger permission modal -->
+        <button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#permissionModal">
+            Open permission modal
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="permissionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Yêu cầu cấp phép</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn vui lòng cấp phép cho chúng tôi được sử dụng dữ liệu từ cảm biến điện thoại để phục vụ tính năng xem VR tour.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-btn-type="accept-permission">Cho phép</button>
+                    </div>
                 </div>
             </div>
         </div>

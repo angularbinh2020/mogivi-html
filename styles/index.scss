@@ -37,7 +37,7 @@ body {
       }
 
       #post-carousel {
-        img[data-fancybox='images-2d']{
+        img[data-fancybox="images-2d"] {
           aspect-ratio: 428/249;
         }
       }
@@ -80,6 +80,14 @@ body {
           background: $orange-gradient;
           border-radius: 20px;
           pointer-events: none;
+        }
+      }
+
+      .new-vr-icon {
+        top: calc(50% - 40px);
+        left: calc(50% - 20px);
+        img {
+          width: 60px;
         }
       }
     }
@@ -192,6 +200,11 @@ body {
         opacity: 1;
       }
     }
+  }
+
+  [data-btn-type="accept-permission"] {
+    background-color: $international-orange;
+    border-color: $international-orange;
   }
 
   .btn-outline {

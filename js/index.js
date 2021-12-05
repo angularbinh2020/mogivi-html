@@ -24,6 +24,21 @@ $(document).ready(function () {
     previewImageSize,
     imageOriginWidth,
   }) {
+    function isIOS() {
+      return (
+        [
+          "iPad Simulator",
+          "iPhone Simulator",
+          "iPod Simulator",
+          "iPad",
+          "iPhone",
+          "iPod",
+        ].includes(navigator.platform) ||
+        // iPad on iOS 13 detection
+        (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+      );
+    }
+
     const viewer = new Marzipano.Viewer(
       document.getElementById("post-vr-tour")
     );
@@ -70,15 +85,15 @@ $(document).ready(function () {
     newScene.switchTo();
 
     function requestPermissionForIOS() {
-      // window.DeviceOrientationEvent.requestPermission()
-      //   .then((response) => {
-      //     if (response === "granted") {
-      //       enableDeviceOrientation();
-      //     }
-      //   })
-      //   .catch((e) => {
-      //     console.error(e);
-      //   });
+      window.DeviceOrientationEvent.requestPermission()
+        .then((response) => {
+          if (response === "granted") {
+            enableDeviceOrientation();
+          }
+        })
+        .catch((e) => {
+          console.error(e);
+        });
     }
 
     function enableDeviceOrientation() {
@@ -100,7 +115,16 @@ $(document).ready(function () {
             "function" &&
           isNotGrantedPermission
         ) {
-          requestPermissionForIOS();
+          if (isIOS()) {
+            requestPermissionForIOS();
+            document
+              .querySelector('[data-btn-type="accept-permission"]')
+              .addEventListener("click", requestPermissionForIOS);
+
+            document.querySelector('[data-target="#permissionModal"]').click();
+          } else {
+            requestPermissionForIOS();
+          }
         } else {
           enableDeviceOrientation();
         }
@@ -169,6 +193,16 @@ $(document).ready(function () {
     }
 
     if (vrSwitchContainer) {
+      document
+        .querySelectorAll(".carousel-container .image-2d-content")
+        .forEach((element) => {
+          element.classList.remove("d-none");
+        });
+      document
+        .querySelectorAll(".carousel-container .vr-tour-content")
+        .forEach((element) => {
+          element.classList.add("d-none");
+        });
       vrSwitchContainer.classList.remove("d-flex");
       vrSwitchContainer.classList.add("d-none");
     }
