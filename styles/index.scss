@@ -31,6 +31,16 @@ body {
     .carousel-container {
       $absolute-bottom: 25px;
       $absolute-right: 15px;
+      $absolute-left: 15px;
+
+      .bottom-white-radius {
+        left: 0;
+        bottom: -5px;
+        background-color: #fff;
+        width: 100%;
+        height: 16px;
+        border-radius: 16px 16px 0 0;
+      }
 
       #post-vr-tour {
         aspect-ratio: 428/249;
@@ -57,17 +67,33 @@ body {
       }
 
       .carousel-index {
-        right: $absolute-right;
-        padding: 3px 8px;
+        left: $absolute-right;
         border-radius: 20px;
         bottom: $absolute-bottom;
         color: $white;
         background: $black-50;
       }
 
+      .notification-container {
+        left: $absolute-right;
+        border-radius: 10px;
+        bottom: $absolute-bottom;
+        background: $white-80;
+        display: flex;
+        align-items: center;
+
+        font-size: 10px;
+
+        img {
+          margin-right: 5px;
+          width: 15px;
+          height: 15px;
+        }
+      }
+
       .vr-2d-container {
         bottom: $absolute-bottom;
-        left: calc(50% - 40px);
+        right: $absolute-right;
         background: $white-80;
         border-radius: 20px;
 
@@ -105,7 +131,7 @@ body {
     }
 
     .tags-container {
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       color: $international-orange;
 
       .tag {
@@ -113,6 +139,7 @@ body {
         padding: 4px 10px;
         margin-right: 6px;
         border-radius: 6px;
+        margin-bottom: 5px;
       }
     }
 
@@ -151,6 +178,208 @@ body {
 
       & > div {
         max-width: 60%;
+      }
+    }
+
+    #loanChart {
+      aspect-ratio: 1;
+
+      .donut {
+        --donut-size: 300px;
+        --donut-border-width: 40px;
+        --donut-spacing: 0;
+        --donut-spacing-color: 255, 255, 255;
+        --donut-spacing-deg: calc(1deg * var(--donut-spacing));
+        border-radius: 50%;
+        height: var(--donut-size);
+        margin: 40px;
+        position: relative;
+        width: var(--donut-size);
+      }
+
+      .donut__label {
+        left: 50%;
+        line-height: 1.5;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 80%;
+      }
+
+      .donut__label__heading {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .donut__label__sub {
+        color: #666666;
+        font-size: 14px;
+        letter-spacing: 0.05em;
+      }
+
+      .donut__slice {
+        height: 100%;
+        position: absolute;
+        width: 100%;
+      }
+
+      .donut__slice::before,
+      .donut__slice::after {
+        border: var(--donut-border-width) solid rgba(0, 0, 0, 0);
+        border-radius: 50%;
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        width: 100%;
+      }
+
+      .donut__slice::before {
+        border-width: calc(var(--donut-border-width) + 1px);
+        box-shadow: 0 0 1px 0
+          rgba(var(--donut-spacing-color), calc(100 * var(--donut-spacing)));
+      }
+
+      .donut__slice__first {
+        --first-start: 0;
+      }
+
+      .donut__slice__first::before {
+        border-top-color: rgba(
+          var(--donut-spacing-color),
+          calc(100 * var(--donut-spacing))
+        );
+        -webkit-transform: rotate(calc(360deg * var(--first-start) + 45deg));
+        transform: rotate(calc(360deg * var(--first-start) + 45deg));
+      }
+
+      .donut__slice__first::after {
+        border-top-color: #ff6838;
+        border-right-color: rgba(
+          255,
+          104,
+          56,
+          calc(100 * (var(--first) - 0.25))
+        );
+        border-bottom-color: rgba(
+          255,
+          104,
+          56,
+          calc(100 * (var(--first) - 0.5))
+        );
+        border-left-color: rgba(
+          255,
+          104,
+          56,
+          calc(100 * (var(--first) - 0.75))
+        );
+        -webkit-transform: rotate(
+          calc(360deg * var(--first-start) + 45deg + var(--donut-spacing-deg))
+        );
+        transform: rotate(
+          calc(360deg * var(--first-start) + 45deg + var(--donut-spacing-deg))
+        );
+      }
+
+      .donut__slice__second {
+        --second-start: calc(var(--first));
+        --second-check: max(calc(var(--second-start) - 0.5), 0);
+        -webkit-clip-path: inset(
+          0 calc(50% * (var(--second-check) / var(--second-check))) 0 0
+        );
+        clip-path: inset(
+          0 calc(50% * (var(--second-check) / var(--second-check))) 0 0
+        );
+      }
+
+      .donut__slice__second::before {
+        border-top-color: rgba(
+          var(--donut-spacing-color),
+          calc(100 * var(--donut-spacing))
+        );
+        -webkit-transform: rotate(calc(360deg * var(--second-start) + 45deg));
+        transform: rotate(calc(360deg * var(--second-start) + 45deg));
+      }
+
+      .donut__slice__second::after {
+        border-top-color: #ffc820;
+        border-right-color: rgba(
+          255,
+          200,
+          32,
+          calc(100 * (var(--second) - 0.25))
+        );
+        border-bottom-color: rgba(
+          255,
+          200,
+          32,
+          calc(100 * (var(--second) - 0.5))
+        );
+        border-left-color: rgba(
+          255,
+          200,
+          32,
+          calc(100 * (var(--second) - 0.75))
+        );
+        -webkit-transform: rotate(
+          calc(360deg * var(--second-start) + 45deg + var(--donut-spacing-deg))
+        );
+        transform: rotate(
+          calc(360deg * var(--second-start) + 45deg + var(--donut-spacing-deg))
+        );
+      }
+
+      .donut__slice__third {
+        --third-start: calc(var(--first) + var(--second));
+        --third-check: max(calc(var(--third-start) - 0.5), 0);
+        -webkit-clip-path: inset(
+          0 calc(50% * (var(--third-check) / var(--third-check))) 0 0
+        );
+        clip-path: inset(
+          0 calc(50% * (var(--third-check) / var(--third-check))) 0 0
+        );
+      }
+
+      .donut__slice__third::before {
+        border-top-color: rgba(
+          var(--donut-spacing-color),
+          calc(100 * var(--donut-spacing))
+        );
+        -webkit-transform: rotate(calc(360deg * var(--third-start) + 45deg));
+        transform: rotate(calc(360deg * var(--third-start) + 45deg));
+      }
+
+      .donut__slice__third::after {
+        border-top-color: #97c95c;
+        border-right-color: rgba(
+          151,
+          201,
+          92,
+          calc(100 * (var(--third) - 0.25))
+        );
+        border-bottom-color: rgba(
+          151,
+          201,
+          92,
+          calc(100 * (var(--third) - 0.5))
+        );
+        border-left-color: rgba(
+          151,
+          201,
+          92,
+          calc(100 * (var(--third) - 0.75))
+        );
+        -webkit-transform: rotate(
+          calc(360deg * var(--third-start) + 45deg + var(--donut-spacing-deg))
+        );
+        transform: rotate(
+          calc(360deg * var(--third-start) + 45deg + var(--donut-spacing-deg))
+        );
       }
     }
 
@@ -243,6 +472,16 @@ body {
     line-height: 24px;
   }
 
+  .font-20-20 {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .font-18-20 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
   .font-33-39 {
     font-size: 33px;
     line-height: 39px;
@@ -253,6 +492,10 @@ body {
     line-height: 36px;
   }
 
+  .font-15-15 {
+    font-size: 15px;
+    line-height: 15px;
+  }
   // color
   .color-silver-chalice {
     color: $silver-chalice;

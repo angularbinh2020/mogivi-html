@@ -1,4 +1,7 @@
+//@ts-check
 $(document).ready(function () {
+  const ImageStorageDomain = "https://nhathat.azureedge.net/vrdev360";
+
   function updateCarouselIndex(currentIndex) {
     const totalImages = $("#post-carousel .carousel-item").length;
 
@@ -175,16 +178,15 @@ $(document).ready(function () {
           });
       });
 
+      const imageSetting = TourSetting.imagesSetting[0];
+
       const tourSetting = {
-        defaultView: {
-          pitch: 0.0732336538048628,
-          yaw: 0.4144114484218129,
-        },
-        tileSize: 840,
-        previewImageSize: 280,
-        imageOriginWidth: 6720,
-        imageUrl: `https://nhathat.azureedge.net/vrdev360/7a0b454b-8d43-481d-92e6-30057a851ca1/{f}_{x}_{y}.jpg`,
-        imagePreviewUrl: `https://nhathat.azureedge.net/vrdev360/7a0b454b-8d43-481d-92e6-30057a851ca1/preview.jpg`,
+        defaultView: imageSetting.defaultView,
+        tileSize: imageSetting.TitleSize,
+        previewImageSize: imageSetting.previewImageSize,
+        imageOriginWidth: imageSetting.ResolutionOriginalUrl.Width,
+        imageUrl: imageSetting.TitleImageUrl,
+        imagePreviewUrl: `${ImageStorageDomain}/${imageSetting.Id}/preview.jpg`,
       };
 
       handleRenderVrTour(tourSetting);
@@ -208,6 +210,138 @@ $(document).ready(function () {
     }
   }
 
+  function handleInputNumberCharacters() {
+    document
+      .querySelectorAll("[inputNumberCharacters]")
+      .forEach((inputElement) => {
+        inputElement.addEventListener("keypress", function (event) {
+          const regexNumber = /[0-9]/;
+          if (!regexNumber.test(event.key)) {
+            event.preventDefault();
+          }
+        });
+
+        inputElement.addEventListener("keyup", function (event) {
+          if (inputElement.value) {
+            let stringValue = inputElement.value || "";
+            stringValue = stringValue.replace(/\./g, "");
+            const numberValue = +stringValue;
+            inputElement.value = numberValue.toLocaleString();
+          }
+        });
+      });
+  }
+
+  function handleLoanCalculator() {
+    const loanAmountElement = document.getElementById("loanAmount");
+    const loanTimeElement = document.getElementById("loanTime");
+    const realEstatePriceElement = document.getElementById("realEstatePrice");
+    const interestRatePerYearElement = document.getElementById(
+      "interestRatePerYear"
+    );
+
+    const mustPayFirstElement = document.getElementById("mustPayFirst");
+    const rootPayElement = document.getElementById("rootPay");
+    const interestPayElement = document.getElementById("interestPay");
+    const payPerMonthElement = document.getElementById("payPerMonth");
+
+    const donutChartElement = document.querySelector("#loanChart .donut");
+    const mainLabelElement = document.querySelector(
+      "#loanChart .donut__label__heading"
+    );
+    const subLabelElement = document.querySelector(
+      "#loanChart .donut__label__sub"
+    );
+
+    function getNumberValue(inputElement) {
+      let value = 0;
+      try {
+        if (inputElement.value) {
+          let rawValue = inputElement.value;
+          rawValue = +rawValue.replace(/\./g, "");
+          if (!isNaN(rawValue)) {
+            value = rawValue;
+          }
+        }
+      } catch (e) {
+        console.error("getNumberValue", e);
+      }
+      return value;
+    }
+
+    function readNumber(numberValue = 0) {
+      let numberVal = numberValue;
+      let subVal = "đồng";
+
+      try {
+        switch (true) {
+          case numberValue > 999999999:
+            {
+              numberVal = (numberValue / 1000000000).toFixed(1);
+              subVal = "tỷ";
+            }
+            break;
+          case numberValue > 999999:
+            {
+              numberVal = (numberValue / 1000000).toFixed(1);
+              subVal = "triệu";
+            }
+            break;
+        }
+      } catch (e) {
+        console.error("readNumber", e);
+      }
+
+      return {
+        numberVal,
+        subVal,
+      };
+    }
+
+    function calculatorResult() {
+      const loanAmount = getNumberValue(loanAmountElement);
+      const loanTime = getNumberValue(loanTimeElement);
+      const realEstatePrice = getNumberValue(realEstatePriceElement);
+      const interestRatePerYear = +(interestRatePerYearElement.value || "0");
+
+      if (!loanAmount || !loanTime) {
+        return;
+      }
+
+      const mustPayFirstAmount = realEstatePrice - loanAmount;
+      const interestPayAmount = Math.ceil(
+        (interestRatePerYear / 100) * loanAmount * loanTime
+      );
+      const payPerMonthAmount = Math.ceil(
+        ((interestRatePerYear / 100) * loanAmount) / 12 +
+          loanAmount / (loanTime * 12)
+      );
+
+      interestPayElement.innerText = interestPayAmount.toLocaleString();
+      rootPayElement.innerText = loanAmount.toLocaleString();
+      mustPayFirstElement.innerText = mustPayFirstAmount.toLocaleString();
+      payPerMonthElement.innerText = "~" + payPerMonthAmount.toLocaleString();
+
+      const totalPay = mustPayFirstAmount + interestPayAmount + loanAmount;
+      const { numberVal, subVal } = readNumber(totalPay);
+      const chartSetting = `--first: ${
+        mustPayFirstAmount / totalPay
+      }; --second: ${interestPayAmount / totalPay}; --third: ${
+        loanAmount / totalPay
+      };`;
+
+      donutChartElement.setAttribute("style", chartSetting);
+      mainLabelElement.innerText = numberVal;
+      subLabelElement.innerText = subVal;
+    }
+
+    loanAmountElement.addEventListener("blur", calculatorResult);
+    loanTimeElement.addEventListener("blur", calculatorResult);
+    interestRatePerYearElement.addEventListener("blur", calculatorResult);
+
+    calculatorResult();
+  }
+
   function onLoad() {
     updateCarouselIndex(1);
 
@@ -219,6 +353,10 @@ $(document).ready(function () {
     $(".bottom-navigation .col-3").on("click", handleSwitchNavActive);
 
     handleSwitchViewVR(true);
+
+    handleLoanCalculator();
+
+    handleInputNumberCharacters();
   }
 
   onLoad();
