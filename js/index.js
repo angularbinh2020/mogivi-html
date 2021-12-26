@@ -348,6 +348,15 @@ $(document).ready(function () {
     calculatorResult();
   }
 
+  function handleCollapseSectionHeader() {
+    document.querySelectorAll(".collapse-btn-custom").forEach((divElement) => {
+      divElement.addEventListener("click", function (e) {
+        const imageDropdown = divElement.querySelector("img");
+        imageDropdown.classList.toggle("open");
+      });
+    });
+  }
+
   function onLoad() {
     updateCarouselIndex(1);
 
@@ -363,6 +372,8 @@ $(document).ready(function () {
     handleLoanCalculator();
 
     handleInputNumberCharacters();
+
+    handleCollapseSectionHeader()
   }
 
   onLoad();

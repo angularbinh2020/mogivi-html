@@ -4,7 +4,7 @@ $white-80: #ffffffcc;
 $silver-chalice: #a6a6a6;
 $mercury: #e2e2e2;
 $silver: #c4c4c4;
-
+$gainsboro: #dedede;
 $gondola: #353535;
 $black: #000000;
 $black-50: #38383880;
@@ -192,7 +192,7 @@ body {
       );
 
       .donut {
-        --donut-size: 300px;
+        --donut-size: 200px;
         --donut-border-width: 40px;
 
         --donut-spacing: 0;
@@ -300,6 +300,24 @@ body {
         } @else {
           $slides-concat: $slides-concat + " + " + var(--#{$name});
         }
+      }
+    }
+
+    .info-detail {
+      border-bottom: 1px dotted $gainsboro;
+      padding: 5px 0;
+    }
+
+    .collapse-btn-custom {
+      border-top: 1px solid $gainsboro;
+
+      h2 {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .open {
+        transform: rotate(180deg);
       }
     }
 
@@ -433,11 +451,19 @@ body {
     color: $silver;
   }
 
+  .color-white {
+    color: $white;
+  }
+
   .color-pacific-blue {
     color: $pacific-blue;
   }
 
   .color-denim {
     color: $denim;
+  }
+
+  .bg-international-orange {
+    background-color: $international-orange;
   }
 }

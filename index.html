@@ -225,7 +225,7 @@
                 </div>
 
                 <h4 class="font-15-36 font-weight-bolder">Vị trí dự án</h4>
-                <div class="card">
+                <div class="card mb-2">
                     <img src="./assets/images/position.png" class="card-img-top" alt="...">
                     <div class="card-body p-2">
                         <div class="d-flex align-items-start address-container">
@@ -237,12 +237,12 @@
                 </div>
 
 
-                <div class="section-header d-flex align-items-center justify-content-between collapsed"
+                <div class="section-header d-flex align-items-center justify-content-between collapsed collapse-btn-custom mb-2 pt-2"
                     data-toggle="collapse" href="#loanAmountContainer" role="button" aria-expanded="false"
                     aria-controls="loanAmountContainer">
-                    <h2 class="section-title">Khoản vay
+                    <h2 class="section-title mb-2">Khoản vay
                     </h2>
-                    <i class="fas fa-angle-up"></i>
+                    <img src="./assets/icons/dropdown.png" />
                 </div>
                 <div class="collapse" id="loanAmountContainer">
 
@@ -288,11 +288,12 @@
                         <option value="debBalanceDecreaseGradually">Lãi suất trả góp theo dư nợ giảm dần</option>
                     </select> -->
 
-                    <h3>Kết quả</h3>
+                    <div class="info-detail mb-4"></div>
 
-                    <div id="loanChart" width="100%">
-                        <div class="donut"
-                            style="--first: .25; --second: .25; --third: .50;">
+                    <h5 class="font-18-20">Kết quả</h5>
+
+                    <div id="loanChart" width="100%" class="my-4">
+                        <div class="donut" style="--first: .25; --second: .25; --third: .50;">
                             <div class="donut__slice donut__slice__first"></div>
                             <div class="donut__slice donut__slice__second"></div>
                             <div class="donut__slice donut__slice__third"></div>
@@ -307,25 +308,27 @@
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center info-detail">
                         <span>Cần trả trước:</span>
-                        <span id="mustPayFirst" class="color-international-orange bold">0</span>
+                        <h6 id="mustPayFirst" class="mb-0 color-international-orange bold">0</h6>
                     </div>
 
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center info-detail">
                         <span>Gốc cần trả:</span>
-                        <span id="rootPay" class="color-denim bold">0</span>
+                        <h6 id="rootPay" class="color-denim bold mb-0">0</h6>
                     </div>
 
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center info-detail">
                         <span>Lãi cần trả:</span>
-                        <span id="interestPay" class="color-pacific-blue bold">0</span>
+                        <h6 id="interestPay" class="color-pacific-blue bold mb-0">0</h6>
                     </div>
 
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center info-detail">
                         <span>Thanh toán hàng tháng:</span>
-                        <span id="payPerMonth">0</span>
+                        <h6 id="payPerMonth" class="mb-0 bold">0</h6>
                     </div>
+
+                    <button type="button" class="btn w-100 mt-5 color-white bg-international-orange">Đăng ký vay</button>
 
                 </div>
             </div>
