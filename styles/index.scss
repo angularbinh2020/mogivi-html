@@ -321,6 +321,58 @@ body {
       }
     }
 
+    .utilities__content-item::before {
+      content: "•";
+      padding-right: 10px;
+      color: $international-orange;
+    }
+
+    #investorContainer {
+      a {
+        color: $international-orange;
+      }
+    }
+
+    #buildingsContainer {
+      p {
+        font-size: 14px;
+        color: $international-orange;
+        position: relative;
+        margin-bottom: 0.5rem;
+      }
+
+      p::after {
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        content: "";
+        width: 50px;
+        border-bottom: 1px solid $international-orange;
+      }
+    }
+
+    #documentsContainer {
+      font-size: 14px;
+      h4 {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      img {
+        object-fit: cover;
+        border: 1px solid #dee2e6;
+        height: 100%;
+      }
+
+      a {
+        color: $international-orange;
+      }
+    }
+
+    a.view-all {
+      font-size: 12px;
+      color: $international-orange;
+    }
+
     .detail-field {
       h4 {
         font-weight: 600;
@@ -420,6 +472,11 @@ body {
     line-height: 20px;
   }
 
+  .font-18-18 {
+    font-size: 18px;
+    line-height: 18px;
+  }
+
   .font-33-39 {
     font-size: 33px;
     line-height: 39px;
@@ -465,5 +522,9 @@ body {
 
   .bg-international-orange {
     background-color: $international-orange;
+  }
+
+  .divider {
+    border-bottom: 1px solid $gainsboro;
   }
 }
