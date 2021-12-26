@@ -18,6 +18,9 @@ $orange-gradient: radial-gradient(
 );
 $cinderella: #fde8df;
 
+$pacific-blue: #00adbb;
+$denim: #155aa9;
+
 body {
   font-family: "Mulish", sans-serif;
 }
@@ -182,19 +185,25 @@ body {
     }
 
     #loanChart {
-      aspect-ratio: 1;
+      $donut-slices: (
+        first: $international-orange,
+        second: $denim,
+        third: $pacific-blue,
+      );
 
       .donut {
         --donut-size: 300px;
         --donut-border-width: 40px;
+
         --donut-spacing: 0;
         --donut-spacing-color: 255, 255, 255;
         --donut-spacing-deg: calc(1deg * var(--donut-spacing));
+
         border-radius: 50%;
         height: var(--donut-size);
-        margin: 40px;
         position: relative;
         width: var(--donut-size);
+        margin: 0 auto;
       }
 
       .donut__label {
@@ -203,7 +212,6 @@ body {
         position: absolute;
         text-align: center;
         top: 50%;
-        -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         width: 80%;
       }
@@ -234,152 +242,64 @@ body {
         left: 0;
         position: absolute;
         top: 0;
-        -webkit-transform: rotate(45deg);
         transform: rotate(45deg);
         width: 100%;
       }
 
       .donut__slice::before {
         border-width: calc(var(--donut-border-width) + 1px);
-        box-shadow: 0 0 1px 0
-          rgba(var(--donut-spacing-color), calc(100 * var(--donut-spacing)));
+        box-shadow: 0 0 1px 0 #{"rgba(var(--donut-spacing-color), calc(100 * var(--donut-spacing)))"};
       }
 
-      .donut__slice__first {
-        --first-start: 0;
-      }
+      $slides-concat: "";
 
-      .donut__slice__first::before {
-        border-top-color: rgba(
-          var(--donut-spacing-color),
-          calc(100 * var(--donut-spacing))
-        );
-        -webkit-transform: rotate(calc(360deg * var(--first-start) + 45deg));
-        transform: rotate(calc(360deg * var(--first-start) + 45deg));
-      }
+      @each $slice in $donut-slices {
+        $name: nth($slice, 1);
+        $color: nth($slice, 2);
+        $i: index($donut-slices, $slice);
 
-      .donut__slice__first::after {
-        border-top-color: #ff6838;
-        border-right-color: rgba(
-          255,
-          104,
-          56,
-          calc(100 * (var(--first) - 0.25))
-        );
-        border-bottom-color: rgba(
-          255,
-          104,
-          56,
-          calc(100 * (var(--first) - 0.5))
-        );
-        border-left-color: rgba(
-          255,
-          104,
-          56,
-          calc(100 * (var(--first) - 0.75))
-        );
-        -webkit-transform: rotate(
-          calc(360deg * var(--first-start) + 45deg + var(--donut-spacing-deg))
-        );
-        transform: rotate(
-          calc(360deg * var(--first-start) + 45deg + var(--donut-spacing-deg))
-        );
-      }
+        @if $i > 1 {
+          .donut__slice__#{$name} {
+            --#{$name}-start: calc(#{$slides-concat});
+            --#{$name}-check: max(calc(var(--#{$name}-start) - 0.5), 0);
+            clip-path: inset(
+              0 calc(50% * (var(--#{$name}-check) / var(--#{$name}-check))) 0 0
+            );
+          }
+        } @else {
+          .donut__slice__#{$name} {
+            --#{$name}-start: 0;
+          }
+        }
 
-      .donut__slice__second {
-        --second-start: calc(var(--first));
-        --second-check: max(calc(var(--second-start) - 0.5), 0);
-        -webkit-clip-path: inset(
-          0 calc(50% * (var(--second-check) / var(--second-check))) 0 0
-        );
-        clip-path: inset(
-          0 calc(50% * (var(--second-check) / var(--second-check))) 0 0
-        );
-      }
+        .donut__slice__#{$name}::before {
+          border-top-color: #{"rgba(var(--donut-spacing-color), calc(100 * var(--donut-spacing)))"};
+          transform: rotate(calc(360deg * var(--#{$name}-start) + 45deg));
+        }
 
-      .donut__slice__second::before {
-        border-top-color: rgba(
-          var(--donut-spacing-color),
-          calc(100 * var(--donut-spacing))
-        );
-        -webkit-transform: rotate(calc(360deg * var(--second-start) + 45deg));
-        transform: rotate(calc(360deg * var(--second-start) + 45deg));
-      }
+        .donut__slice__#{$name}::after {
+          border-top-color: rgba($color, 1);
+          border-right-color: rgba(
+            $color,
+            calc(100 * (var(--#{$name}) - 0.25))
+          );
+          border-bottom-color: rgba(
+            $color,
+            calc(100 * (var(--#{$name}) - 0.5))
+          );
+          border-left-color: rgba($color, calc(100 * (var(--#{$name}) - 0.75)));
+          transform: rotate(
+            calc(
+              360deg * var(--#{$name}-start) + 45deg + var(--donut-spacing-deg)
+            )
+          );
+        }
 
-      .donut__slice__second::after {
-        border-top-color: #ffc820;
-        border-right-color: rgba(
-          255,
-          200,
-          32,
-          calc(100 * (var(--second) - 0.25))
-        );
-        border-bottom-color: rgba(
-          255,
-          200,
-          32,
-          calc(100 * (var(--second) - 0.5))
-        );
-        border-left-color: rgba(
-          255,
-          200,
-          32,
-          calc(100 * (var(--second) - 0.75))
-        );
-        -webkit-transform: rotate(
-          calc(360deg * var(--second-start) + 45deg + var(--donut-spacing-deg))
-        );
-        transform: rotate(
-          calc(360deg * var(--second-start) + 45deg + var(--donut-spacing-deg))
-        );
-      }
-
-      .donut__slice__third {
-        --third-start: calc(var(--first) + var(--second));
-        --third-check: max(calc(var(--third-start) - 0.5), 0);
-        -webkit-clip-path: inset(
-          0 calc(50% * (var(--third-check) / var(--third-check))) 0 0
-        );
-        clip-path: inset(
-          0 calc(50% * (var(--third-check) / var(--third-check))) 0 0
-        );
-      }
-
-      .donut__slice__third::before {
-        border-top-color: rgba(
-          var(--donut-spacing-color),
-          calc(100 * var(--donut-spacing))
-        );
-        -webkit-transform: rotate(calc(360deg * var(--third-start) + 45deg));
-        transform: rotate(calc(360deg * var(--third-start) + 45deg));
-      }
-
-      .donut__slice__third::after {
-        border-top-color: #97c95c;
-        border-right-color: rgba(
-          151,
-          201,
-          92,
-          calc(100 * (var(--third) - 0.25))
-        );
-        border-bottom-color: rgba(
-          151,
-          201,
-          92,
-          calc(100 * (var(--third) - 0.5))
-        );
-        border-left-color: rgba(
-          151,
-          201,
-          92,
-          calc(100 * (var(--third) - 0.75))
-        );
-        -webkit-transform: rotate(
-          calc(360deg * var(--third-start) + 45deg + var(--donut-spacing-deg))
-        );
-        transform: rotate(
-          calc(360deg * var(--third-start) + 45deg + var(--donut-spacing-deg))
-        );
+        @if $i == 1 {
+          $slides-concat: var(--#{$name});
+        } @else {
+          $slides-concat: $slides-concat + " + " + var(--#{$name});
+        }
       }
     }
 
@@ -511,5 +431,13 @@ body {
 
   .color-silver {
     color: $silver;
+  }
+
+  .color-pacific-blue {
+    color: $pacific-blue;
+  }
+
+  .color-denim {
+    color: $denim;
   }
 }

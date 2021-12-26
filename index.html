@@ -237,10 +237,13 @@
                 </div>
 
 
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#loanAmountContainer"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Khoản vay
-                </button>
+                <div class="section-header d-flex align-items-center justify-content-between collapsed"
+                    data-toggle="collapse" href="#loanAmountContainer" role="button" aria-expanded="false"
+                    aria-controls="loanAmountContainer">
+                    <h2 class="section-title">Khoản vay
+                    </h2>
+                    <i class="fas fa-angle-up"></i>
+                </div>
                 <div class="collapse" id="loanAmountContainer">
 
                     <label>Giá trị bất động sản</label>
@@ -288,32 +291,35 @@
                     <h3>Kết quả</h3>
 
                     <div id="loanChart" width="100%">
-                        <div class="donut" style="--first: .30; --second: .50; --third: .10;">
+                        <div class="donut"
+                            style="--first: .25; --second: .25; --third: .50;">
                             <div class="donut__slice donut__slice__first"></div>
                             <div class="donut__slice donut__slice__second"></div>
                             <div class="donut__slice donut__slice__third"></div>
                             <div class="donut__label">
                                 <div class="donut__label__heading">
-                                    4.5
+                                    Donut Charts
                                 </div>
-                                <div class="donut__label__sub">tỷ</div>
+                                <div class="donut__label__sub">
+                                    with Pure CSS
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center">
                         <span>Cần trả trước:</span>
-                        <span id="mustPayFirst">0</span>
+                        <span id="mustPayFirst" class="color-international-orange bold">0</span>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center">
                         <span>Gốc cần trả:</span>
-                        <span id="rootPay">0</span>
+                        <span id="rootPay" class="color-denim bold">0</span>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center">
                         <span>Lãi cần trả:</span>
-                        <span id="interestPay">0</span>
+                        <span id="interestPay" class="color-pacific-blue bold">0</span>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center">

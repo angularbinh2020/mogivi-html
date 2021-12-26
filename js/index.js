@@ -317,17 +317,23 @@ $(document).ready(function () {
           loanAmount / (loanTime * 12)
       );
 
+      const {
+        numberVal: payPerMonthAmountDisplay,
+        subVal: payPerMonthAmountSub,
+      } = readNumber(payPerMonthAmount);
+
       interestPayElement.innerText = interestPayAmount.toLocaleString();
       rootPayElement.innerText = loanAmount.toLocaleString();
       mustPayFirstElement.innerText = mustPayFirstAmount.toLocaleString();
-      payPerMonthElement.innerText = "~" + payPerMonthAmount.toLocaleString();
+      payPerMonthElement.innerText =
+        "~" + ` ${payPerMonthAmountDisplay} ${payPerMonthAmountSub}`;
 
       const totalPay = mustPayFirstAmount + interestPayAmount + loanAmount;
       const { numberVal, subVal } = readNumber(totalPay);
       const chartSetting = `--first: ${
         mustPayFirstAmount / totalPay
-      }; --second: ${interestPayAmount / totalPay}; --third: ${
-        loanAmount / totalPay
+      }; --second: ${loanAmount / totalPay}; --third: ${
+        interestPayAmount / totalPay
       };`;
 
       donutChartElement.setAttribute("style", chartSetting);
