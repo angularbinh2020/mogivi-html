@@ -120,6 +120,7 @@ $(document).ready(function () {
         const isNotGrantedPermission =
           localStorage.getItem("isGrantedDeviceOrientation") !== "true" ||
           isIosAndNeedAskPermission;
+          console.log('isNotGrantedPermission',isNotGrantedPermission);
         if (
           typeof window.DeviceOrientationEvent.requestPermission ==
             "function" &&
