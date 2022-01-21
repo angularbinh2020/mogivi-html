@@ -120,6 +120,7 @@ $(document).ready(function () {
         const isNotGrantedPermission =
           localStorage.getItem("isGrantedDeviceOrientation") !== "true" ||
           isIosAndNeedAskPermission;
+          alert(demoXem||"không có giá trị")
           alert(`isIosAndNeedAskPermission: ${isIosAndNeedAskPermission?'true':"false"}`);
         if (
           typeof window.DeviceOrientationEvent.requestPermission ==
