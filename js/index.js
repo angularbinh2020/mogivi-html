@@ -97,6 +97,11 @@ $(document).ready(function () {
     }
 
     function enableDeviceOrientation() {
+      try {
+        window.ReactNativeWebView.postMessage("is granted permission");
+      } catch (e) {
+        alert("Lỗi");
+      }
       localStorage.setItem("isGrantedDeviceOrientation", "true");
       deviceOrientationControlMethod.getPitch(function (err, pitch) {
         if (!err) {
@@ -108,8 +113,13 @@ $(document).ready(function () {
 
     function setEnableDeviceOrientation() {
       if (window.DeviceOrientationEvent) {
+        const isIosAndNeedAskPermission =
+          typeof window.isShowRequireDeviceOrientationPermission === "boolean"
+            ? window.isShowRequireDeviceOrientationPermission
+            : window.isShowRequireDeviceOrientationPermission === "true";
         const isNotGrantedPermission =
-          localStorage.getItem("isGrantedDeviceOrientation") !== "true";
+          localStorage.getItem("isGrantedDeviceOrientation") !== "true" ||
+          isIosAndNeedAskPermission;
         if (
           typeof window.DeviceOrientationEvent.requestPermission ==
             "function" &&
