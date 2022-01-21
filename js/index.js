@@ -120,8 +120,12 @@ $(document).ready(function () {
         const isNotGrantedPermission =
           localStorage.getItem("isGrantedDeviceOrientation") !== "true" ||
           isIosAndNeedAskPermission;
-          alert(window.demoXem||"không có giá trị")
-          alert(`isIosAndNeedAskPermission: ${isIosAndNeedAskPermission?'true':"false"}`);
+        alert(window.demoXem || "không có giá trị");
+        alert(
+          `isIosAndNeedAskPermission: ${
+            isIosAndNeedAskPermission ? "true" : "false"
+          }`
+        );
         if (
           typeof window.DeviceOrientationEvent.requestPermission ==
             "function" &&
@@ -142,8 +146,7 @@ $(document).ready(function () {
         }
       }
     }
-
-    setEnableDeviceOrientation();
+    window.setEnableDeviceOrientation = setEnableDeviceOrientation;
   }
 
   function handleSwitchViewVR(isHaveVrTour) {
